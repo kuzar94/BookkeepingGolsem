@@ -142,62 +142,321 @@ table {
   border-spacing: 0;
 }
 //RESET
-
-.carousel-item {
+@import url("https://fonts.googleapis.com/css?family=Fjalla+One|Noto+Sans&display=swap");
+$mainFont: "Fjalla One", sans-serif;
+$secondaryFont: "Noto Sans", sans-serif;
+$mainColor: rgb(0, 46, 91);
+$secondaryColor: rgb(253, 228, 40);
+$mainPadding: 10em;
+$secondaryPadding: 3em;
+@mixin beforeContnetNavbar($image) {
+  background-image: url($image);
+  background-size: 18px 18px;
+  display: inline-block;
+  margin-right: 0.4em;
+  width: 18px;
+  height: 18px;
+  content: "";
+}
+@mixin beforeContnetMedia($image) {
+  background-image: url($image);
+  background-size: 23px 23px;
+  display: inline-block;
+  width: 23px;
+  height: 23px;
+  content: "";
+  margin-top: 5px;
+  color: rgba(255, 255, 255, 0);
+  &:hover {
+    color: rgba(255, 255, 255, 0);
+  }
+}
+@mixin carouselContent($image) {
+  background-image: url($image);
+  background-repeat: no-repeat;
+  background-size: cover;
   width: 100vw;
-  height: 80vh;
+  height: 90vh;
+  .carousel-caption {
+    margin-bottom: 37vh;
+    font-family: $mainFont;
+    h5 {
+      color: $mainColor;
+      font-size: 3em;
+      display: block;
+      text-align: left;
+    }
+    p {
+      font-size: 2em;
+      display: block;
+      text-align: left;
+      width: 70%;
+    }
+  }
 }
-.img1 {
-  background-image: url(../assets/imageSlide1.jpeg);
-  background-repeat: no-repeat;
-  background-size: cover;
+.firstNavbar {
+  background-color: rgb(0, 46, 91);
+  color: rgb(243, 243, 243);
+  height: 3em;
+  li {
+    padding: 0 4em 0 4em;
+    font-size: 0.8em;
+    display: flex;
+    align-items: center;
+    font-family: $secondaryFont;
+  }
+  .cityNavbar::before {
+    @include beforeContnetNavbar("../assets/pin.svg");
+  }
+  .timeNavbar::before {
+    @include beforeContnetNavbar("../assets/time.svg");
+  }
+  .telephoneNavbar::before {
+    @include beforeContnetNavbar("../assets/phone.svg");
+  }
 }
-.img2 {
-  background-image: url(../assets/imageSlide2.jpeg);
-  background-repeat: no-repeat;
-  background-size: cover;
+.secondNavbar {
+  background-color: rgba(255, 255, 255, 0.3);
+  height: 6em;
+  z-index: 2;
+  .leftPartSecondNavbar {
+    padding-left: $mainPadding;
+    .companyName {
+      font-size: 2em;
+      font-family: $mainFont;
+      letter-spacing: 0.1em;
+      font-weight: bolder;
+      color: $mainColor;
+    }
+    .companyService {
+      font-size: 1.3em;
+      font-family: $mainFont;
+      letter-spacing: 0.1em;
+      font-weight: bolder;
+      color: $mainColor;
+    }
+  }
+  .rightPartSecondNavbar {
+    padding-right: $mainPadding;
+    ul li {
+      padding-right: $secondaryPadding;
+      a {
+        font-size: 1em;
+        font-family: $secondaryFont;
+        color: $mainColor;
+        font-weight: bold;
+        &:hover {
+          color: rgb(10, 99, 187);
+        }
+      }
+      .mediaTwitter {
+        @include beforeContnetMedia("../assets/twitter.svg");
+      }
+      .mediaInstagram {
+        @include beforeContnetMedia("../assets/instagram.svg");
+      }
+      .mediaFacebook {
+        @include beforeContnetMedia("../assets/facebook.svg");
+      }
+    }
+  }
 }
-.img3 {
-  background-image: url(../assets/imageSlide3.jpeg);
-  background-repeat: no-repeat;
-  background-size: cover;
+.carousel {
+  top: -6em;
+  z-index: 1;
+  .img1 {
+    @include carouselContent("../assets/imageSlide1.jpeg");
+  }
+  .img2 {
+    @include carouselContent("../assets/imageSlide2.jpeg");
+  }
+  .img3 {
+    @include carouselContent("../assets/imageSlide3.jpeg");
+  }
 }
 .about {
+  margin-top: -6em;
   background-color: rgb(233, 233, 233);
-  padding-top: 5em;
+  padding-top: 3em;
   height: 70vh;
+  .titleAbout {
+    font-size: 2.5em;
+    font-family: $mainFont;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+    text-align: center;
+  }
+  .line {
+    margin-top: 0.3em;
+    border: 3px solid $secondaryColor;
+    border-radius: 10px;
+    width: 4%;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .leftSectionAbout {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     .imageAbout {
-      width: 300px;
-      height: 300px;
+      margin-top: 2em;
+      width: 270px;
+      height: 270px;
       background-image: url(../assets/aboutImage.jpg);
       background-repeat: no-repeat;
       background-size: cover;
       border-radius: 2px;
     }
     .subtitlesAbout {
-      width: 300px;
+      padding-top: 0.3em;
+      font-size: 0.8em;
+      font-family: $secondaryFont;
+      width: 270px;
     }
   }
   .rightSectionAbout {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    .titleAbout {
-      font-size: 2em;
-    }
     .textAbout {
+      font-family: $secondaryFont;
+      letter-spacing: 0.05em;
+      line-height: 1.5em;
       width: 90%;
       padding-top: 2em;
       text-align: justify;
     }
   }
 }
+.testimonials {
+  padding-top: 3em;
+  padding-left: $mainPadding;
+  padding-right: $mainPadding;
+  padding-bottom: 3em;
+  .titleTestimonials {
+    font-size: 2.5em;
+    font-family: $mainFont;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+    text-align: center;
+  }
+  .line {
+    margin-top: 0.3em;
+    border: 3px solid $secondaryColor;
+    border-radius: 10px;
+    width: 4%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cardTestimonials {
+    .columnCardTestimonials {
+      display: flex;
+      justify-content: center;
+    }
+    .card {
+      width: 100%;
+      margin-top: 3em;
+      border: 1px solid rgba(0, 0, 0, 0);
+      img {
+        border-radius: 2px;
+        transition: 0.5s ease;
+        cursor: pointer;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+      h5 {
+        font-size: 1.3em;
+        font-family: $secondaryFont;
+        letter-spacing: 0.05em;
+      }
+      p {
+        font-size: 0.8em;
+        font-family: $secondaryFont;
+        letter-spacing: 0.05em;
+      }
+    }
+  }
+}
 .contact {
   background-color: rgb(27, 27, 27);
   color: rgb(236, 236, 236);
+  padding-top: 3em;
+  padding-left: $mainPadding;
+  padding-right: $mainPadding;
+
+  .titleContact {
+    font-size: 2.5em;
+    font-family: $mainFont;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+    text-align: center;
+  }
+  .line {
+    margin-top: 0.3em;
+    border: 3px solid $secondaryColor;
+    border-radius: 10px;
+    width: 4%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  form {
+    padding-top: 1em;
+    font-family: $secondaryFont;
+    padding-bottom: 3em;
+  }
+  .textAbout {
+    padding-top: 2em;
+    font-family: $secondaryFont;
+    letter-spacing: 0.05em;
+    line-height: 1.5em;
+    text-align: justify;
+    padding-bottom: 3em;
+  }
+}
+.find {
+  padding-top: 3em;
+  padding-left: 0px;
+  padding-right: 0px;
+  background-color: rgb(233, 233, 233);
+
+  .titleFind {
+    font-size: 2.5em;
+    font-family: $mainFont;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+    text-align: center;
+  }
+  .line {
+    margin-top: 0.3em;
+    border: 3px solid $secondaryColor;
+    border-radius: 10px;
+    width: 4%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .mapFind {
+    padding-top: 2em;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+.foot {
+  padding-top: 2em;
+  padding-left: $mainPadding;
+  padding-right: $mainPadding;
+  background-color: $mainColor;
+  color: white;
+  h5 {
+    font-size: 1.2em;
+    font-family: $mainFont;
+    letter-spacing: 0.1em;
+  }
+  p {
+    padding-top: 0.5em;
+    font-family: $secondaryFont;
+  }
+  a {
+    color: white;
+    font-size: 1em;
+    font-family: $secondaryFont;
+  }
 }
