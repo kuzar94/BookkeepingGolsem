@@ -141,7 +141,8 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-//RESET
+// END OF RESET
+// VARIABLES
 @import url("https://fonts.googleapis.com/css?family=Fjalla+One|Noto+Sans&display=swap");
 $mainFont: "Fjalla One", sans-serif;
 $secondaryFont: "Noto Sans", sans-serif;
@@ -149,7 +150,11 @@ $mainColor: rgb(0, 46, 91);
 $secondaryColor: rgb(253, 228, 40);
 $mainPadding: 10em;
 $secondaryPadding: 3em;
-@mixin beforeContnetNavbar($image) {
+$mediumMainPadding: 2em;
+$smallMainPadding: 0.5em;
+//MIXINS
+//FOR ICONS
+@mixin beforeContentNavbar($image) {
   background-image: url($image);
   background-size: 18px 18px;
   display: inline-block;
@@ -158,7 +163,9 @@ $secondaryPadding: 3em;
   height: 18px;
   content: "";
 }
-@mixin beforeContnetMedia($image) {
+
+//FOR MEDIA ICONS
+@mixin beofreContentMedia($image) {
   background-image: url($image);
   background-size: 23px 23px;
   display: inline-block;
@@ -171,6 +178,7 @@ $secondaryPadding: 3em;
     color: rgba(255, 255, 255, 0);
   }
 }
+//FOR CAROUSEL IMAGES
 @mixin carouselContent($image) {
   background-image: url($image);
   background-repeat: no-repeat;
@@ -194,6 +202,79 @@ $secondaryPadding: 3em;
     }
   }
 }
+//FOR UNDERLINE
+@mixin line {
+  margin-top: 0.3em;
+  border: 3px solid $secondaryColor;
+  border-radius: 10px;
+  width: 4%;
+  margin-left: auto;
+  margin-right: auto;
+}
+//BURGER NAVBAR
+.navbarBurger {
+  display: none;
+  .navbar-toggler-icon {
+    background-image: url("https://mdbootstrap.com/img/svg/hamburger2.svg?color=fff");
+  }
+  background-color: $mainColor;
+  p {
+    font-family: $mainFont;
+    letter-spacing: 0.1em;
+    font-weight: bolder;
+    color: white;
+    font-size: 1.2em;
+  }
+
+  .burgerMenuInfo {
+    display: flex;
+    justify-content: space-between;
+    div {
+      padding-top: 10px;
+      font-size: 0.8em;
+      display: flex;
+      font-family: $secondaryFont;
+      color: white;
+    }
+  }
+  button {
+    margin-left: 43%;
+  }
+  .navbar-nav li a {
+    margin-top: 10px;
+    font-family: $secondaryFont;
+    text-align: center;
+    font-size: 1.2em;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  .cityNavbar::before {
+    @include beforeContentNavbar("../assets/pin.svg");
+  }
+  .timeNavbar::before {
+    @include beforeContentNavbar("../assets/time.svg");
+  }
+  .telephoneNavbar::before {
+    @include beforeContentNavbar("../assets/phone.svg");
+  }
+  .mediaLinks {
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    .mediaTwitter {
+      @include beofreContentMedia("../assets/twitter.svg");
+    }
+    .mediaInstagram {
+      @include beofreContentMedia("../assets/instagram.svg");
+    }
+    .mediaFacebook {
+      @include beofreContentMedia("../assets/facebook.svg");
+    }
+  }
+}
+//FIRST SMALL NAVBAR
 .firstNavbar {
   background-color: rgb(0, 46, 91);
   color: rgb(243, 243, 243);
@@ -206,15 +287,16 @@ $secondaryPadding: 3em;
     font-family: $secondaryFont;
   }
   .cityNavbar::before {
-    @include beforeContnetNavbar("../assets/pin.svg");
+    @include beforeContentNavbar("../assets/pin.svg");
   }
   .timeNavbar::before {
-    @include beforeContnetNavbar("../assets/time.svg");
+    @include beforeContentNavbar("../assets/time.svg");
   }
   .telephoneNavbar::before {
-    @include beforeContnetNavbar("../assets/phone.svg");
+    @include beforeContentNavbar("../assets/phone.svg");
   }
 }
+//SECOND BIGGER NAVBAR
 .secondNavbar {
   background-color: rgba(255, 255, 255, 0.3);
   height: 6em;
@@ -250,17 +332,18 @@ $secondaryPadding: 3em;
         }
       }
       .mediaTwitter {
-        @include beforeContnetMedia("../assets/twitter.svg");
+        @include beofreContentMedia("../assets/twitter.svg");
       }
       .mediaInstagram {
-        @include beforeContnetMedia("../assets/instagram.svg");
+        @include beofreContentMedia("../assets/instagram.svg");
       }
       .mediaFacebook {
-        @include beforeContnetMedia("../assets/facebook.svg");
+        @include beofreContentMedia("../assets/facebook.svg");
       }
     }
   }
 }
+//CAROUSEL
 .carousel {
   top: -6em;
   z-index: 1;
@@ -274,11 +357,13 @@ $secondaryPadding: 3em;
     @include carouselContent("../assets/imageSlide3.jpeg");
   }
 }
+//ABOUT US SECTION
 .about {
   margin-top: -6em;
   background-color: rgb(233, 233, 233);
   padding-top: 3em;
-  height: 70vh;
+  padding-bottom: 3em;
+
   .titleAbout {
     font-size: 2.5em;
     font-family: $mainFont;
@@ -287,12 +372,7 @@ $secondaryPadding: 3em;
     text-align: center;
   }
   .line {
-    margin-top: 0.3em;
-    border: 3px solid $secondaryColor;
-    border-radius: 10px;
-    width: 4%;
-    margin-left: auto;
-    margin-right: auto;
+    @include line();
   }
   .leftSectionAbout {
     display: flex;
@@ -326,6 +406,7 @@ $secondaryPadding: 3em;
     }
   }
 }
+//TESTIMONIALS SECTION
 .testimonials {
   padding-top: 3em;
   padding-left: $mainPadding;
@@ -339,12 +420,7 @@ $secondaryPadding: 3em;
     text-align: center;
   }
   .line {
-    margin-top: 0.3em;
-    border: 3px solid $secondaryColor;
-    border-radius: 10px;
-    width: 4%;
-    margin-left: auto;
-    margin-right: auto;
+    @include line();
   }
   .cardTestimonials {
     .columnCardTestimonials {
@@ -376,6 +452,7 @@ $secondaryPadding: 3em;
     }
   }
 }
+//CONTACT SECTION
 .contact {
   background-color: rgb(27, 27, 27);
   color: rgb(236, 236, 236);
@@ -391,12 +468,7 @@ $secondaryPadding: 3em;
     text-align: center;
   }
   .line {
-    margin-top: 0.3em;
-    border: 3px solid $secondaryColor;
-    border-radius: 10px;
-    width: 4%;
-    margin-left: auto;
-    margin-right: auto;
+    @include line();
   }
   form {
     padding-top: 1em;
@@ -412,12 +484,13 @@ $secondaryPadding: 3em;
     padding-bottom: 3em;
   }
 }
+//FIND US SECTION
 .find {
   padding-top: 3em;
   padding-left: 0px;
   padding-right: 0px;
-  background-color: rgb(233, 233, 233);
-
+  background-color: $mainColor;
+  color: rgb(245, 245, 245);
   .titleFind {
     font-size: 2.5em;
     font-family: $mainFont;
@@ -426,12 +499,7 @@ $secondaryPadding: 3em;
     text-align: center;
   }
   .line {
-    margin-top: 0.3em;
-    border: 3px solid $secondaryColor;
-    border-radius: 10px;
-    width: 4%;
-    margin-left: auto;
-    margin-right: auto;
+    @include line();
   }
   .mapFind {
     padding-top: 2em;
@@ -439,6 +507,7 @@ $secondaryPadding: 3em;
     padding-right: 0px;
   }
 }
+//FOOTER SECTION
 .foot {
   padding-top: 2em;
   padding-left: $mainPadding;
@@ -458,5 +527,125 @@ $secondaryPadding: 3em;
     color: white;
     font-size: 1em;
     font-family: $secondaryFont;
+  }
+}
+//RWD
+@media (max-width: 1370px) {
+  .foot {
+    padding-left: $mediumMainPadding;
+    padding-right: $mediumMainPadding;
+  }
+  .contact {
+    padding-left: $mediumMainPadding;
+    padding-right: $mediumMainPadding;
+  }
+  .testimonials {
+    padding-left: $mediumMainPadding;
+    padding-right: $mediumMainPadding;
+  }
+
+  .secondNavbar {
+    .leftPartSecondNavbar {
+      padding-left: $mediumMainPadding;
+    }
+    .rightPartSecondNavbar {
+      padding-right: $mediumMainPadding;
+    }
+  }
+  .carousel {
+    .img1,
+    .img2,
+    .img3 {
+      .carousel-caption {
+        margin-bottom: 29vh;
+      }
+    }
+  }
+}
+@media (max-width: 872px) {
+  .foot {
+    padding-left: $smallMainPadding;
+    padding-right: $smallMainPadding;
+  }
+  .contact {
+    padding-left: $smallMainPadding;
+    padding-right: $smallMainPadding;
+  }
+  .testimonials {
+    padding-left: $smallMainPadding;
+    padding-right: $smallMainPadding;
+  }
+
+  .secondNavbar {
+    .leftPartSecondNavbar {
+      padding-left: $smallMainPadding;
+    }
+    .rightPartSecondNavbar {
+      padding-right: $smallMainPadding;
+    }
+  }
+  .carousel {
+    .img1,
+    .img2,
+    .img3 {
+      .carousel-caption {
+        margin-bottom: 27vh;
+      }
+    }
+  }
+}
+//MOBILE RWD
+@media (max-width: 768px) {
+  .carousel {
+    .img1,
+    .img2,
+    .img3 {
+      .carousel-caption {
+        h5 {
+          font-size: 2.5em;
+        }
+        p {
+          font-size: 1.5em;
+        }
+      }
+    }
+  }
+  .about {
+    margin-top: 0em;
+    .rightSectionAbout {
+      .textAbout {
+        padding-left: 2em;
+      }
+    }
+  }
+  .contact {
+    .textAbout {
+      padding-left: 2em;
+      padding-right: 2em;
+    }
+    .divSubmit {
+      display: flex;
+      justify-content: center;
+    }
+  }
+  .navbarBurger {
+    display: block;
+    background-color: $mainColor;
+  }
+  .firstNavbar {
+    display: none;
+  }
+  .secondNavbar {
+    display: none;
+  }
+  .carousel {
+    top: 0em;
+  }
+}
+@media (max-width: 698px) {
+  .firstNavbar {
+    li {
+      padding: 0 1em 0 1em;
+    }
   }
 }

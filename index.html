@@ -14,7 +14,9 @@
     <link href="css/main.css" rel="stylesheet" />
     <title>Golsem</title>
   </head>
+  <!-- BODY -->
   <body>
+    <!-- FIRST NAVBAR -->
     <nav class="navbar navbar-expand  firstNavbar">
       <div class="navbar-collapse collapse">
         <ul class="navbar-nav mx-auto">
@@ -30,6 +32,56 @@
         </ul>
       </div>
     </nav>
+    <!-- NAVBAR FOR MOBILE  -->
+    <nav class="navbar  navbarBurger">
+      <a class="navbar-brand" href="#"
+        ><p>Golsem</p>
+        <p>Bookkeeping services</p></a
+      >
+      <div class="burgerMenuInfo">
+        <div class="nav-item cityNavbar">
+          Wrexham
+        </div>
+        <div class="nav-item timeNavbar">
+          8:00 - 18:00
+        </div>
+        <div class="nav-item telephoneNavbar">
+          123 456 789
+        </div>
+      </div>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent15"
+        aria-controls="navbarSupportedContent15"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent15">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="#">Services </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#">Contact Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#">Map</a>
+          </li>
+          <li class="nav-item mediaLinks">
+            <a class="nav-link mediaInstagram" href="#">x</a>
+            <a class="nav-link mediaTwitter" href="#">x</a>
+            <a class="nav-link mediaFacebook" href="#">x</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- SECOND NAVBAR -->
     <nav class="navbar navbar-expand  secondNavbar">
       <div class="navbar-collapse collapse leftPartSecondNavbar">
         <ul class="navbar-nav mr-auto">
@@ -67,23 +119,20 @@
         </ul>
       </div>
     </nav>
-    <div
-      id="carouselExampleCaptions"
-      class="carousel slide"
-      data-ride="carousel"
-    >
+    <!-- CAROUSEL -->
+    <div id="carouselCaptions" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li
-          data-target="#carouselExampleCaptions"
+          data-target="#carouselCaptions"
           data-slide-to="0"
           class="active"
         ></li>
-        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+        <li data-target="#carouselCaptions" data-slide-to="1"></li>
+        <li data-target="#carouselCaptions" data-slide-to="2"></li>
       </ol>
       <div class="carousel-inner ">
         <div class="carousel-item active img1">
-          <div class="carousel-caption d-none d-md-block ">
+          <div class="carousel-caption  ">
             <h5>Lorem ipsum dolor sit amet.</h5>
             <p>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -92,7 +141,7 @@
           </div>
         </div>
         <div class="carousel-item img2">
-          <div class="carousel-caption d-none d-md-block ">
+          <div class="carousel-caption  ">
             <h5>Lorem ipsum dolor sit amet.</h5>
             <p>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -101,7 +150,7 @@
           </div>
         </div>
         <div class="carousel-item  img3">
-          <div class="carousel-caption d-none d-md-block">
+          <div class="carousel-caption ">
             <h5>Lorem ipsum dolor sit amet.</h5>
             <p>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -112,7 +161,7 @@
       </div>
       <a
         class="carousel-control-prev"
-        href="#carouselExampleCaptions"
+        href="#carouselCaptions"
         role="button"
         data-slide="prev"
       >
@@ -121,7 +170,7 @@
       </a>
       <a
         class="carousel-control-next"
-        href="#carouselExampleCaptions"
+        href="#carouselCaptions"
         role="button"
         data-slide="next"
       >
@@ -129,7 +178,7 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
-
+    <!-- ABOUT US CONTAINER -->
     <div class="container-fluid about">
       <div class="titleAbout">About Us</div>
       <div class="line"></div>
@@ -213,11 +262,11 @@
         <div class="col-12 col-md-6">
           <form>
             <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
+              <label for="emailId">Email address</label>
               <input
                 type="email"
                 class="form-control"
-                id="exampleInputEmail1"
+                id="emailId"
                 aria-describedby="emailHelp"
                 placeholder="Enter email"
               />
@@ -243,7 +292,11 @@
                 rows="3"
               ></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="divSubmit">
+              <button type="submit" class="btn btn-primary submitButton">
+                Submit
+              </button>
+            </div>
           </form>
         </div>
         <div class="col-12 col-md-6">
