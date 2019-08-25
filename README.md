@@ -1,5 +1,6 @@
 <img alt="Logo" src="http://coderslab.pl/svg/logo-coderslab.svg" width="400">
-
+https://kuzar94.github.io/BookkeepingGolsem/
+https://kuzar94.github.io/WeatherApp/
 # Sass
 
 > Pamiętaj, żeby oddzielać ćwiczenia komentarzami i pisać czytelny, dobrze sformatowany kod.
